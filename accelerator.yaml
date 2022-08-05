@@ -1,0 +1,27 @@
+accelerator:
+  displayName: Java Spring
+  description: Testing OpenRewrite
+  iconUrl: https://findicons.com/files/icons/963/very_emotional_emoticons/128/128_36.png
+  tags:
+    - java
+    - spring
+  options:
+  - name: packageName
+    label: Package Name
+    inputType: text
+    defaultValue: com.springdeveloper.hello
+    required: true
+
+engine:
+  merge:
+    - include: [ "**" ]
+      exclude: [ "**/*.java"]
+
+    - include: ["**/*.java"]
+      chain:
+      - type: OpenRewriteRecipe
+        recipe: org.openrewrite.java.ChangePackage
+        options:
+          oldFullyQualifiedPackageName: "'com.example.hello'"
+          newFullyQualifiedPackageName: "#packageName"
+          recursive: true
