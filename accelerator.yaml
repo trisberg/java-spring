@@ -22,6 +22,6 @@ engine:
       - type: OpenRewriteRecipe
         recipe: org.openrewrite.java.ChangePackage
         options:
-          oldFullyQualifiedPackageName: "'com.example.hello'"
-          newFullyQualifiedPackageName: "#packageName"
+          oldPackageName: "'com.example.hello'"
+          newPackageName: "#packageName"
           recursive: true
